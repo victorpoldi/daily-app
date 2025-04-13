@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from './Button';
-import Input from './Input';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
 import { formatDateStringToString } from '@/lib/formatter';
 import { TTodo } from '../../../types/todoType';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
@@ -26,7 +26,7 @@ const TodoItemList: React.FC<TodoItemListProps> = ({
       {todoList.map((todo) => (
         <li
           key={todo.id}
-          className="mb-6 flex flex-row gap-4 items-center bg-gray-800 p-4 rounded-lg"
+          className="mb-4 flex flex-row gap-4 items-center bg-gray-800 p-4 rounded-lg"
         >
           <Input type="checkbox" onChange={onComplete} className='w-5 h-5'/>
           <div>
