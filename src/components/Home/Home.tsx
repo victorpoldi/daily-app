@@ -13,10 +13,10 @@ import { TCategory } from "../../../types/categoryType";
 
 const todos = new Set<TTodo>([]);
 const categories = new Set<TCategory>([
-  { id: uuidv4(), title: "Work"},
-  { id: uuidv4(), title: "Personal"},
-  { id: uuidv4(), title: "Shopping"},
-  { id: uuidv4(), title: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
+  { id: uuidv4(), title: "Work" },
+  { id: uuidv4(), title: "Personal" },
+  { id: uuidv4(), title: "Shopping" },
+  { id: uuidv4(), title: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" },
 ]);
 
 export default function Home() {
@@ -85,13 +85,15 @@ export default function Home() {
           onClose={() => send({ type: "cancel" })}
           open={state.matches("creatingNewTodo.showingFormInput")}
           style={{
-            backgroundColor: "#101020",
+            backgroundColor: "#101828",
             color: "#fff",
             padding: "1rem",
-            borderRadius: "16px",
+            borderRadius: "16px 16px 0 0",
           }}
           styles={{
-            header: { borderBottom: "1px solid rgba(255, 255, 255, 0.8)" },
+            header: { borderBottom: "1px solid rgba(255, 255, 255, 0.8)", padding: "1rem" },
+            body: {padding: "1rem" },
+            wrapper: { height: "fit-content" },
           }}
         >
           <NewTodoForm

@@ -2,9 +2,10 @@
 import { useMachine } from "@xstate/react";
 import { authMachine } from "../../machines/authMachine";
 import { useRouter } from "next/navigation";
-import { createAccount, login } from "../../api/auth";
+import { createAccount, login, signInWithGoogle } from "../services/auth";
 import Button from "./ui/Button";
 import Input from "./ui/Input";
+import { GoogleOutlined } from "@ant-design/icons";
 
 export default function Auth() {
   const router = useRouter();
@@ -40,9 +41,19 @@ export default function Auth() {
           throw new Error("Unable to Create New Account");
         }
       },
+      checkingGoogle: async () => {
+        try {
+          await signInWithGoogle();
+          console.log("checkingGoogle");
+          return { email: "user", password: "google" };
+        } catch (error) {
+          console.error("Unable to sign in with Google", error);
+          throw new Error("Unable to sign in with Google");
+        }
+      },
       checkAuth: async () => {
         console.log("Checking Auth");
-        // throw new Error("Not Authenticated");
+        throw new Error("Not Authenticated");
         return { email: "test", password: "test" };
       },
       redirect: async () => {
@@ -58,28 +69,57 @@ export default function Auth() {
       <h1>AUTHPAGE</h1>
       {state.matches("loggedOut") && (
         <>
-          <Button onClick={() => send("login")}>Login</Button>
-          <Button onClick={() => send("createAccount")}>Create Account</Button>
+          <Button className="w-50" onClick={() => send("login")}>
+            Login
+          </Button>
+          <Button className="w-50" onClick={() => send("createAccount")}>
+            Create Account
+          </Button>
+          <Button
+            className="justify-between flex w-50"
+            onClick={() => send("loginWithGoogle")}
+          >
+            <GoogleOutlined />
+            Sign in with Google
+          </Button>
         </>
       )}
       {(state.matches("showLoginForm") || state.matches("showCreateAccountForm")) && (
         <>
-          <Input
-            type="text"
-            placeholder="Email"
-            onChange={(e) => {
-              send({ type: "emailInputChanged", value: e.target.value });
-            }}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => {
-              send({ type: "passwordInputChanged", value: e.target.value });
-            }}
-          />
-          <Button onClick={() => send("submit")}>Submit</Button>
-          <Button onClick={() => send("cancel")}>Cancel</Button>
+          <form className="flex flex-col gap-4">
+            <Input
+              type="text"
+              placeholder="Email"
+              className="w-50"
+              required
+              onChange={(e) => {
+                send({ type: "emailInputChanged", value: e.target.value });
+              }}
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              required
+              className="w-50"
+              onChange={(e) => {
+                send({ type: "passwordInputChanged", value: e.target.value });
+              }}
+            />
+            <Button
+              type="submit"
+              className="w-50 disabled:opacity-50"
+              disabled={
+                state.context.formInputEmail === "" ||
+                state.context.formInputPassword === ""
+              }
+              onClick={() => send("submit")}
+            >
+              Submit
+            </Button>
+            <Button className="w-50" onClick={() => send("cancel")}>
+              Cancel
+            </Button>
+          </form>
         </>
       )}
       {state.matches("loggedIn") && <h2>Redirecting...</h2>}

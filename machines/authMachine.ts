@@ -2,7 +2,7 @@ import { assign, createMachine } from 'xstate';
 
 export const authMachine = createMachine(
   {
-    /** @xstate-layout N4IgpgJg5mDOIC5QEMCuAXAFgWWQY0wEsA7MAOkIgBswBiCAe1IuIDcGBrcgsPDgQQyYA2gAYAuolAAHBrELpCTKSAAeiAMwBGABxlRANgBMAFh0aArAHYNVgyasAaEAE9NGo2QtGNJg7r8jAE4DHSsAX3DnNCxcAhJyShpaMAAnVIZUsmkqZHQAM0yAWzIePkEsMUkkEFl5RWUa9QRtPUNTc2tbeydXRC0gvSMfEw1zUZ0Lcw1I6KE4omYqBigYCAB5DFo8VLA8sH48PAZUYnQqlTqFJWIVZoMrPRCwrQ0DUStRHSDnNwQfDT6UTA15WMHvLSzEAxHD4RbkZarSCbdC0REkC41K4NW5NRAGUJkZ5WV7vT7fX79bREoK0nQ9MEaUQWExQmELBJkWCYBgAdwAwrt9odjqd0AAxYq0WCoABGRQUmJkcmujVAzQ0QVE+m0RhJVlpRlEJiMlIQWlM2usxosAw0tiCFrZ8zhnO5fMFe3QByOJzOktSRW2yGIeDAVCVtRVOLu+MeRNCJLeHy+Pz65p0nhMtMGo1pFm8QWdsVdzHdAqF3pFfolxVKlZ9ov9xQAksRpFswEVkIQqG2O+h+ZgQ2tI9ibrGEAZAWZRu96SErN5en8LSYTETRLYDWM-BaZlFoS74mWeRWvY2awGSjsL9Wxdf+1tpMhYLBeZkIE-B8PiKOJJc0YTniCAWNqS7ApBUHAhoZpaFoZhEmB04GBYbyOkEB5zCWJ7kOWAAyKwkNe0pygq5wAViQFqmoiBmJ4aEWvqhrGkYBhmmEnhWA42YWLm9rwcWsK4VyZ6EVAxFSngIZhhGlHKvUwHqviUwJi8ybkmmfw6FoZDZnSkwFlqmZCRyp58uJkmBmQlnEI+7adt2vbfkOI6QGO1G4sp5pWGQIzJguDzLhxwJEsES70uuWgGqyh7sqWeFiURdl1rZ9kDrQL5vh+qRfg5P5uRAHmKTRzQbmB0GVUYOhmp8G5BHY-jWCEZioaZCX1l6JBQPeZz0EwiRsJw5DxSJt55N1vXoAgJDsNJOJVMVqpebRCA6QYRK2PpjyiBaQSmumFrMmFVhsWh3F2NV7VjZWk2+mKKTpJk2S5AUdajfCnUTX+U0zUN803It8lRiVK0alqOpMdFLEmnBWiGGQYS2mY3weCYkJxcen2IhJf5tv1zCzcNZAfZyOPdW2f1zRNTBA9UCnLZOBobaM3HfBY9h8dxHHWH5nwhF8RrDDosXYcJ2MrLjUD42kGRZDkeSFNZpNLJLFPEFTDAA7TEhLTGIGtX5Ol6tD+2sWaBhBBufg6CLvivMjRiRIexAMBAcAqCrYCAaDk4ALSOnpObByHK6IH7G1QfB64mKIjoGhEmM4Z9STe1RvsGwdfzaBtFWiEaliYSYHPXRLSIbBgPuMyB3iAltDVhFbHxTGaRgDEhkHZvYuioU7Sfi26Z6esK93NoGVf695XF55VwLVSYcGGLpxeGG8aGW3apeDx6DZTdeX1VqPtaBt+E9Kat7xkImYH7dFzK5nBvgWIjHP7cMHhMraW-mbyaXFGfpVw6jCDiHUBYcpzRT0o1LQzV7D0gsN-RKFlkr7z-iffKACwZ0SCGQTUItGS7UMDHdi6YtS6VtsEXa2ZdCnVFkeZOnJxqKB+kfTBk4+LP18N0T4AxbRoTgkaDcMCxj+GNNoV4iCyDkzxitccgCIGcNZg8XaQQ+GwXTCLHBpglwcxRtYEWkicaQDbGwkC8NELF20BzS2lh9wCPzpuB0RDjSfAMM7cIQA */
+    /** @xstate-layout N4IgpgJg5mDOIC5QEMCuAXAFgWWQY0wEsA7MAOkIgBswBiCAe1IuIDcGBrcgsPDgQQyYA2gAYAuolAAHBrELpCTKSAAeiAKwAmADQgAnogCMGgOyiyWgBxWAnKesaALADYjTgMwBfL3rRZcAhJyShpaMAAnCIYIsmkqZHQAMxiAWzIePkEsMUkkEFl5RWV89QQrURcyWw9TDRMtDStTOz1DBCctD2qtWzMnWxcXT0qXHz8hQKJmKgYoGAgAeQxaPAiwRLB+PDwGVGJ0XJVChSViFTKKqpq6hqaW2zbjUydLI2atUSN3z6dTU3GIH8OHw03Is3mkGW6FoEJIR3yJ2K51KiC06LIGhuZhcvQ8ticGg8TwQ3z+ZFEfS0Rg8og8RlMLmagOBU2CZAhC2hsLmJAA6gpMABxBhzGgImRyU4lUBlLSdTHYxl4glEkm2KyvQYuURYxmdLQuby+IGTUHs2CYBgAdwAwutNttdvt0AAxNK0WCoABGqQUEoKUuRFzRLUVtQq9TqLRJDKMZFM7wcXx+oj+AJNrPNzEtNvtG3QWx2ewO7oiqVWyGIeDAVADSLOIfKlWqtXq2nurQMaKsVSZL3l9mVupZZqCOatdodhadJbdaQy06LztLaQAksRpCtpMhYLBrTEIBut+hbZgqwt60HG6iEPVurZKtZdQyzFYSfLrkSn7qXn0jFoo4BNm5C5lOBbLnOZbpGsEGzi60HHisYCpMghBUEhp7nsQl4SMc14ymomiGmQwyVB4wxOE4lIMrGGgWLYjGDNG9GmB48pASC46gZOAAyvLENBno+n6hx4YiBEorKaLWBSNzfFY35aA4xLdqSvQWM4Vi1O4Rh0i4GqcWyE42vxUAkEJeBVjWdbiZKRQ3tJCBdFo4bRriNSqqp7R6R4GhkK4OpGm+thdBmEzAdxZBgWZFkLrFgnrpu267vuh6YWeF6QFeDmEWUThWK5LQAQpSmJrGLlkB4fmmBqhp+QMVhGSB0V8QJ0FkAliHJTCKFoRhPWZTh2V2YGuVSURHR9JiJhNEyZVGLGNJVB4hUvEYoVWHplTNVFsGJCQUDwQc9BMCEbCcOQWZ7dOh3HegCAkOwVnIrkOXShNcpMm5kavjGalNAxvRNI0fSFdou1gouBZ3cWLrhFEMRxAkyQLtdUP7YoOH3Y9F0vWcb2jQ2eWhlYP0vtG75qeirnUs0aaKQSJjhaakVQ5yh0bqdzBPZdZDo+yHM4RuuPPQdTCE3k9kfU2dNyTp7xlV0sadGT9JdNpLhRtVTiQ4LczmcLxAI9EsTxIkKTlvzY7swbnPEKLDD4xLEjvcGt7omTlIK4ptLKcranfPYiraPSJgmBULMC8w1poVjUBliKYp0IwPMXVwGSYLwHCHUnUDikTklNrV3RpkyBW9ImG2LWpfTdKt-s2CYogtFHNvsrHpw4Ynor53QkSm8jFsLpkOc4XnBdS2NMsewqWJtsqnmEt5iA3AFQyVKI8p6cFPgmsQDAQHAKjR2A+HjU2AC0Lgkpf8oUqIj9fNS9iP4Ves89QZ8SRfHvffPLQKZvhJJ4Ko1E3BOAAltACJcP7ggNlCDA58Z5OWaOqck9QdRYi6K-ZwcDWp5iXPdaCyD3ZOVcP5R8uJfqUxJEaAKTENSUkNPeNubMLSTnzI6OGq4raY0gghJKJ5SGOUmh2eWjJExDBpIyEkHhyRUJctpVauJjQRS4lDGK7U0giJJh0eRCYtrUkVn7cqgcGZkBsMpeRvR6ZjEzO3Ey1ourxW0eWTCujPrEVMKRWqQxXAKSMLiWM1VujWDsAZOkjEGT4MxrDFc6BPFNk6LGb6mpagMyxJAsw+ChZQA3Ek282gKrvACq4IxDh6IuDYRo-WkIjwTWJl40kj94zNAGGxSuQca4+U8K8JodhskvEpNU-Bnd4492ToU8h9EKTFQolRaith3jqlklYhwjgAmeD3l4IAA */
     id: 'authMachine',
     initial: 'idle',
     tsTypes: {} as import('./authMachine.typegen').Typegen0,
@@ -16,13 +16,14 @@ export const authMachine = createMachine(
       services: {} as {
         checkAuth: { data: { email: string; password: string } };
         login: { data: { email: string; password: string } };
+        checkingGoogle: {data: { email: string; password: string } }
         createAccount: { data: { email: string; password: string } };
         redirect: { data: void };
       },
       events: {} as
         | { type: 'emailInputChanged'; value: string }
         | { type: 'passwordInputChanged'; value: string }
-        | { type: 'login' | 'createAccount' | 'submit' | 'cancel' | 'redirect' },
+        | { type: 'login' | 'createAccount' | 'loginWithGoogle' | 'submit' | 'cancel' | 'redirect' },
     },
     states: {
       idle: {
@@ -39,16 +40,21 @@ export const authMachine = createMachine(
           },
         },
       },
+
       loggedOut: {
         on: {
           createAccount: {
             target: 'showCreateAccountForm',
           },
+
           login: {
             target: '#authMachine.showLoginForm',
           },
+
+          loginWithGoogle: "waitingForGoogle"
         },
       },
+
       showCreateAccountForm: {
         initial: "createAccountFormInput",
         states: {
@@ -74,6 +80,7 @@ export const authMachine = createMachine(
           },
         },
       },
+
       showLoginForm: {
         initial: 'LoginFormInput',
         states: {
@@ -99,6 +106,7 @@ export const authMachine = createMachine(
           },
         },
       },
+
       creatingAccount: {
         invoke: {
           src: 'createAccount',
@@ -112,6 +120,7 @@ export const authMachine = createMachine(
           },
         },
       },
+
       loggingIn: {
         invoke: {
           src: 'login',
@@ -125,12 +134,28 @@ export const authMachine = createMachine(
           },
         },
       },
+
       loggedIn: {
         invoke: {
           src: 'redirect',
         },
         type: 'final',
       },
+
+      waitingForGoogle: {
+        invoke: {
+          src: "checkingGoogle",
+          id: "checkingGoogle",
+          onDone: {
+            target: "loggedIn",
+            actions: 'assignAuthDataToContext',
+          },
+          onError: {
+            target: "loggedOut",
+            actions: 'assignErrorToContext',
+          }
+        }
+      }
     },
   },
   {
