@@ -16,13 +16,36 @@ env:
 
   - variable: NEXT_PUBLIC_API_KEY_AUTH
     secret: nextPublicApiKeyAuth
+    availability:
+      - BUILD
+      - RUNTIME
+
   - variable: NEXT_PUBLIC_AUTH_DOMAIN_AUTH
     secret: nextPublicAuthDomainAuth
+    availability:
+      - BUILD
+      - RUNTIME
+
   - variable: PROJECT_ID_AUTH
     secret: projectIdAuth
+    availability:
+      - BUILD
+      - RUNTIME
+
   - variable: MESSAGING_SENDER_ID_AUTH
     secret: messagingSenderIdAuth
+    availability:
+      - BUILD
+      - RUNTIME
+  
   - variable: APP_ID_AUTH
     secret: appIdAuth
+    availability:
+      - BUILD
+      - RUNTIME
+
   - variable: MEASUREMENT_ID_AUTH
     secret: measurementIdAuth
+    availability:
+      - BUILD
+      - RUNTIME
