@@ -10,6 +10,7 @@ import { Drawer, FloatButton } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import NewTodoForm from "./NewTodoForm";
 import { TCategory } from "../../../types/categoryType";
+import { createTodo } from "@/services/todo";
 
 const todos = new Set<TTodo>([]);
 const categories = new Set<TCategory>([
@@ -34,6 +35,8 @@ export default function Home() {
           targetDate: context.targetDateFormInput,
         };
         todos.add(newTodo);
+        const result = await createTodo(newTodo);
+        console.log("NEW TODO CREATED", result);
       },
       deleteTodo: async (context, event) => {
         todos.delete(event.todo);
