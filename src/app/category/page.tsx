@@ -3,6 +3,6 @@ import { PageLayout } from "@/components/ui/PageLayout";
 
 export default function CategoryPage() {
   return (
-    <PageLayout body={<Category />} headerTitle="Category" />
+    <PageLayout body={<Category />} />
   );
 }
